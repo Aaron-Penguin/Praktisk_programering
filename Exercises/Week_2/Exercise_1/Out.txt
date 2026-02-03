@@ -1,0 +1,5 @@
+Enter a number as type (double) as the function imput:
+ sqrt(2) = 1.41421
+(2)^1/5 =1.1487
+(e)^pi =23.1407
+(pi)^e =22.4592
