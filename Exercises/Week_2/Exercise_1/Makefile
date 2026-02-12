@@ -14,4 +14,4 @@ source.o: source.cc header.h
 	$(CXX) $(CXXFLAGS) -c source.cc
 
 clean:
-	rm -f main.o Out.txt source.o
+	rm -f main.o Out.txt source.o main

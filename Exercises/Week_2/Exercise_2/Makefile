@@ -1,6 +1,17 @@
-Out.txt : Run_code                             # Out.txt depends on math_stuff.exe
-	./Run_code > Out.txt                         # run math_stuf.exe, send output to Out.txt
-Run_code: Gamma_func.cc                 # hello depends on hello.cc
-	c++ -o Run_code Gamma_func.cc        # compile-and-link hello.cc, 
+CXX = g++
+CXXFLAGS = -Wall -Wextra -std=c++20
+
+Out.txt : main             # Creating an txt file for the output
+	./main > Out.txt
+
+main: main.o source.o
+	$(CXX) main.o source.o -o main
+
+main.o: main.cc header.h
+	$(CXX) $(CXXFLAGS) -c main.cc
+
+source.o: source.cc header.h
+	$(CXX) $(CXXFLAGS) -c source.cc
+
 clean:
-	rm -f Out.txt Run_code
+	rm -f main.o Out.txt source.o
