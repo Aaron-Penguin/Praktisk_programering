@@ -15,6 +15,10 @@ double fgamma(double x){
 	return std::exp(lnfgamma);
 	}
 
-double stirling_gamma(double x){return std::sqrt(2* PI) * std::pow(x, x - 0.5) * std::pow(e, -x) ;}
+// double stirling_gamma(double x){return std::pow(x,x) * std::pow(e,-x);}
 
+long double stirling_gamma(double n){
+	if(n==1) {return 1;}
+	else {return std::sqrt(2* PI* (n-1)) * std::pow( (n-1)/e,  (n-1) ) * std::pow(e,
+(1/(12* (n-1)) - 1/(360* std::pow(n-1, 3))  + 1/(1260* std::pow(n-1, 5))   ))  ;}}    // n! approx sqrt(2 pi n)* (n/e)^n,  Gamma(n) = (n -1)!
 }

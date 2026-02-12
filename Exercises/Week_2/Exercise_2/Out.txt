@@ -1,1 +1,11 @@
-Gamma(1) =1
+Gammafunction recusive formula,   Gammafunction with stirlings approximation to 5'th order
+Gamma(1) =1   Gamma_stir(1) =1
+Gamma(2) =1   Gamma_stir(2) =1.00029
+Gamma(3) =2   Gamma_stir(3) =2.00001
+Gamma(4) =6   Gamma_stir(4) =6
+Gamma(5) =24   Gamma_stir(5) =24
+Gamma(6) =120   Gamma_stir(6) =120
+Gamma(7) =720   Gamma_stir(7) =720
+Gamma(8) =5040   Gamma_stir(8) =5040
+Gamma(9) =40320   Gamma_stir(9) =40320
+Gamma(10) =362880   Gamma_stir(10) =362880
