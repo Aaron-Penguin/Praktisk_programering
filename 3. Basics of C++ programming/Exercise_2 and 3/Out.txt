@@ -9,3 +9,13 @@ Gamma(7) =720   Gamma_stir(7) =720
 Gamma(8) =5040   Gamma_stir(8) =5040
 Gamma(9) =40320   Gamma_stir(9) =40320
 Gamma(10) =362880   Gamma_stir(10) =362880
+Gamma(11) =3.6288e+06
+Gamma(12) =3.99168e+07
+Gamma(13) =4.79002e+08
+Gamma(14) =6.22702e+09
+Gamma(15) =8.71783e+10
+Gamma(16) =1.30767e+12
+Gamma(17) =2.09228e+13
+Gamma(18) =3.55687e+14
+Gamma(19) =6.40237e+15
+Gamma(20) =1.21645e+17
