@@ -1,5 +1,6 @@
 #include<iostream>
 #include<limits>
+#include<cmath>
 
 int main() {
     float f= 1.0f; while((float)   (1.0f+f) != 1.0f){f/=2.0f;} f*=2.0f;
@@ -10,8 +11,8 @@ int main() {
     double d_sys = std::numeric_limits<double>::epsilon();
     long double l_sys = std::numeric_limits<long double>::epsilon();
 
-std::cout << "float epsilon from loop =" << f << "    float epsilon from system = " << f_sys << "\n" ;
-std::cout << "double epsilon from loop =" << d << "   double epsilon from system = " << d_sys << "\n" ;
+std::cout << "float epsilon from loop =" << f << "    float epsilon from system = " << f_sys << "   Shood equal to (2)^-23 =" << std::pow(2, -23) << "\n" ;
+std::cout << "double epsilon from loop =" << d << "   double epsilon from system = " << d_sys << "   Shood equal to (2)^-52 =" << std::pow(2, -52) << "\n" ;
 std::cout << "long doube epsilon from loop =" << l << "  long double epsilon from system = " << l_sys << "\n" ;
     return 0;
 }

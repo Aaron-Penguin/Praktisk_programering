@@ -1,0 +1,8 @@
+ 1 + epsi/2 + epsi/2 = 1
+ epsi/2 + epsi/2 + 1 = 1
+a==b ? false
+a>1  ? false
+b>1  ? true
+       tiny=0.00000000000000011
+1+tiny+tiny=1.00000000000000000
+tiny+tiny+1=1.00000000000000022
