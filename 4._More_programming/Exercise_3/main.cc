@@ -23,10 +23,7 @@ int main() {
     std::cout << "d1=" << d1 << "\n";
     std::cout << "d2=" << d2 << "\n";
 
-    double number = 8;
-    double tiny_number = std::pow(2, -10);
-
-
-    std::cout << "Testing (a == b) =>" << approx(number, tiny_number, 1e-9) << "\n";
+    std::cout << std::boolalpha;                  // ensuring that we print True instead of 1.
+    std::cout << "Testing (a == b) =>" << approx(d1, d2, 1e-9) << "\n";
     return 0;
 }
