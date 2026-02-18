@@ -1,1 +1,6 @@
-x =1
+x_double  =1
+y_double  =2
+z_double  =3
+x_float  =1
+y_float  =2
+z_float  =3
