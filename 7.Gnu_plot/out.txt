@@ -1,0 +1,4 @@
+File opened successfully
+Coulum is not empty
+Data written successfully.
+System succesfully finisched
