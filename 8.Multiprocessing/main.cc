@@ -1,11 +1,8 @@
 #include<iostream>
 #include<vector>
 #include<thread>
-#include <chrono>  // for time  measure
 
 using namespace std;
-using namespace std::chrono;
-
 
 
 struct My_data {int a, b; double sum;};
@@ -19,20 +16,8 @@ void harm(My_data& arg){
 
 
 int main(int argc, char* argv[]) {
-// auto start = high_resolution_clock::now();  
-// auto start = system_clock::now();
-
-// cerr << "Give a number of threads to be created" << endl;    
-
-// int N_threads; 
-// cin >> N_threads;
-
-// cerr << "Number of terms in the harmonic sum to be computed" << endl;
-// int N_terms;
-// cin >> N_terms;
 
 
-	// std::vector<double> numbers;     // Storing all numbers
 	long N_threads;
 	long N_terms = 1e9;
 	for(int i=0; i < argc; ++i){
@@ -65,9 +50,6 @@ for(auto &p : params) {total+=p.sum;}
 
 cout << "Total sum =" << total << endl;
 
-// auto stop = high_resolution_clock::now();
-// auto stop = system_clock::now();
-// auto duration = duration_cast<seconds>(stop - start);
-// cerr << "Time for computation in seconds:" << duration.count() << endl;
+
 return 0;
 }
