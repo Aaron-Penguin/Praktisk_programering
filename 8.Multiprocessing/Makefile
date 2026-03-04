@@ -8,7 +8,7 @@ main.o: main.cc
 	$(CXX) $(CXXFLAGS) -c main.cc $@
 
 clean:
-	rm -f main.o Out.txt
+	rm -f main.o out.times.txt main fig1.png
 
 TIME = time --format "$$N_threads %e %U" --append --output $@
 out.times.txt : main Makefile
@@ -17,5 +17,5 @@ out.times.txt : main Makefile
 		$(TIME) ./main -N_threads $$N_threads;\
 	done
 
-fig1.pdf:
-	gnuplot plot.gp > fig1.pdf
+fig1.png: Makefile out.times.txt
+	gnuplot plot.gp > fig1.png
