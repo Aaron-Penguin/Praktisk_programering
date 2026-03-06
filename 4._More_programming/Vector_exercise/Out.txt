@@ -1,1 +1,2 @@
-3
+Adding vectors: a + b (2, 4, 3)
+Subtracting vectors a - b (0, 2, 1)

@@ -1,35 +1,8 @@
 #include<iostream>
+#include <string>
+#include"vec.h"
 
 using namespace std;
-
-
-struct vec{
-    double x, y, z;
-
-    // Constructor
-    vec(double x_in, double y_in, double z_in);
-    vec();                                    // default
-    vec(const vec&) = default;                                 // copy
-    vec(vec&&) = default;                                      // move
-    ~vec() = default;                                          // destructor
-
-    // assignment
-    vec& operator=(const vec&) = default;                     // copy assignment
-    vec& operator=(vec&&) = default;                          // move assignment
-
-    // arithmetic
-    vec& operator+=(const vec&);
-    vec& operator-=(const vec&);
-    vec& operator*=(double);
-    vec& operator/=(double);
-
-    // utility
-    void set(double a, double b, double c) { x = a; y = b; z = c; };
-    void print(const std::string& s = "") const;                              // for debugging
-
-    // stream output
-    friend std::ostream& operator<<(std::ostream&, const vec&);
-};
 
 
 // Definition of member functions
@@ -41,31 +14,76 @@ vec::vec(double x_in, double y_in, double z_in){
 
 vec::vec(){x = 0.0; y=0.0, z = 0.0;};
 
-// void vec::print(std::string s) const {
-//     std::cout << s << x << " " << y << " " << z << std::endl;
-// }
+// += operator
+vec& vec::operator+=(const vec& v)
+{
+    x += v.x;
+    y += v.y;
+    z += v.z;
+    return *this;
+}
 
+// -= operator
+vec& vec::operator-=(const vec& v)
+{
+    x -= v.x;
+    y -= v.y;
+    z -= v.z;
+    return *this;
+}
 
-// non-member operators
-vec operator-(const vec&);
-vec operator-(const vec&, const vec&);
-vec operator+(const vec&, const vec&);
-vec operator*(const vec&, double);
-vec operator*(double, const vec&);
-vec operator/(const vec&, double);
+// *= scalar
+vec& vec::operator*=(double s)
+{
+    x *= s;
+    y *= s;
+    z *= s;
+    return *this;
+}
 
+// /= scalar
+vec& vec::operator/=(double s)
+{
+    x /= s;
+    y /= s;
+    z /= s;
+    return *this;
+}
 
-// approximate equality
-bool approx(const vec&, const vec&, double acc = 1e-6, double eps = 1e-6);
+// print method
+void vec::print(const std::string& s) const
+{
+    if (!s.empty())
+        std::cout << s << " ";
+
+    std::cout << "(" << x << ", " << y << ", " << z << ")" << std::endl;
+}
+
+// stream operator <<
+std::ostream& operator<<(std::ostream& os, const vec& v)
+{
+    os << "(" << v.x << ", " << v.y << ", " << v.z << ")";
+    return os;
+}
+
 
 
 int main() {
 
-vec Vector1 = vec(1.0, 3.0, 2.0);
-vec Vector2 {1.0,1.0,1.0};
+vec a = vec(1.0, 3.0, 2.0);
+vec b {1.0,1.0,1.0};
 
-vec ny_vec = Vector1.operator+=(Vector2);
-cout << "ny_vec_x" << ny_vec.x << endl;
+vec c = a;
+c += b;
+
+vec d = a;
+d -=b;
+
+c.print("Adding vectors: a + b");
+
+
+d.print("Subtracting vectors a - b");
+
 
 return 0;
 }
