@@ -4,11 +4,11 @@ using namespace std;
 
 int main() {
 
-double array[3][3] = {{1},
-                    {7},
-                    {3}};
+double array[3] = {1,7,4};
 
-cout << array[0][1] << endl;
+
+
+cout << sizeof(array)/sizeof(array[0]) << endl;
 
 return 0; 
 }

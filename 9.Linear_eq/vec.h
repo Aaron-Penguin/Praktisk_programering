@@ -3,10 +3,14 @@
 
 class Vector{
 
-    double array[];
+    double arr[];
 
-    
+    Vector(double array[]);
+    ~Vector() = default;
+}
 
 
 
+Vector::Vector(double array[]) {
+    arr[] = array[];
 }
