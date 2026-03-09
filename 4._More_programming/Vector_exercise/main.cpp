@@ -66,6 +66,12 @@ std::ostream& operator<<(std::ostream& os, const vec& v)
     return os;
 }
 
+// Inner product
+
+
+double operator*(const vec& v, const vec& v_in) {
+    return v.x *v_in.x +   v.y* v_in.y   + v.z *v_in.z;
+}
 
 
 int main() {
@@ -83,6 +89,10 @@ c.print("Adding vectors: a + b");
 
 
 d.print("Subtracting vectors a - b");
+
+double e = a * b;
+
+cout << " Inner product =  " << e << endl;
 
 
 return 0;

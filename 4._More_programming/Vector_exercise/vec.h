@@ -21,6 +21,9 @@ struct vec{
     vec& operator*=(double);
     vec& operator/=(double);
 
+    // // Inner product
+    // double operator*(const vec& v,const vec&);
+
     // utility
     void set(double a, double b, double c) { x = a; y = b; z = c; };
     void print(const std::string& s = "") const;                              // for debugging
@@ -37,6 +40,8 @@ vec operator+(const vec&, const vec&);
 vec operator*(const vec&, double);
 vec operator*(double, const vec&);
 vec operator/(const vec&, double);
+
+double operator*(const vec&, const vec&);
 
 // approximate equality
 bool approx(const vec&, const vec&, double acc = 1e-6, double eps = 1e-6);
