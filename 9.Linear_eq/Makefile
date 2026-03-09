@@ -9,6 +9,3 @@ main: main.o
 
 main.o: main.cc
 	$(CXX) $(CXXFLAGS) -c main.cc
-
-clean:
-	rm -f main.o Out.txt

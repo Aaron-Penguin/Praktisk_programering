@@ -1,82 +1,13 @@
 #include<iostream>
 #include <string>
-#include"vec.h"
+#include"vec.cc"
+
 
 using namespace std;
 
-
-// Definition of member functions
-vec::vec(double x_in, double y_in, double z_in){
-    x = x_in;
-    y = y_in;
-    z = z_in;
-};
-
-vec::vec(){x = 0.0; y=0.0, z = 0.0;};
-
-// += operator
-vec& vec::operator+=(const vec& v)
-{
-    x += v.x;
-    y += v.y;
-    z += v.z;
-    return *this;
-}
-
-// -= operator
-vec& vec::operator-=(const vec& v)
-{
-    x -= v.x;
-    y -= v.y;
-    z -= v.z;
-    return *this;
-}
-
-// *= scalar
-vec& vec::operator*=(double s)
-{
-    x *= s;
-    y *= s;
-    z *= s;
-    return *this;
-}
-
-// /= scalar
-vec& vec::operator/=(double s)
-{
-    x /= s;
-    y /= s;
-    z /= s;
-    return *this;
-}
-
-// print method
-void vec::print(const std::string& s) const
-{
-    if (!s.empty())
-        std::cout << s << " ";
-
-    std::cout << "(" << x << ", " << y << ", " << z << ")" << std::endl;
-}
-
-// stream operator <<
-std::ostream& operator<<(std::ostream& os, const vec& v)
-{
-    os << "(" << v.x << ", " << v.y << ", " << v.z << ")";
-    return os;
-}
-
-// Inner product
-
-
-double operator*(const vec& v, const vec& v_in) {
-    return v.x *v_in.x +   v.y* v_in.y   + v.z *v_in.z;
-}
-
-
 int main() {
 
-vec a = vec(1.0, 3.0, 2.0);
+vec a = vec(1.0, 1.0, 2.0);
 vec b {1.0,1.0,1.0};
 
 vec c = a;
@@ -92,7 +23,9 @@ d.print("Subtracting vectors a - b");
 
 double e = a * b;
 
-cout << " Inner product =  " << e << endl;
+cout << "Inner product =  " << e << endl;
+
+cout << "Norm of b =" << b.norm() << endl;
 
 
 return 0;

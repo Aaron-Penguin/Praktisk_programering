@@ -21,11 +21,11 @@ struct vec{
     vec& operator*=(double);
     vec& operator/=(double);
 
-    // // Inner product
-    // double operator*(const vec& v,const vec&);
 
     // utility
     void set(double a, double b, double c) { x = a; y = b; z = c; };
+    double norm() const;
+
     void print(const std::string& s = "") const;                              // for debugging
 
     // stream output
@@ -41,6 +41,8 @@ vec operator*(const vec&, double);
 vec operator*(double, const vec&);
 vec operator/(const vec&, double);
 
+
+//  Inner product
 double operator*(const vec&, const vec&);
 
 // approximate equality

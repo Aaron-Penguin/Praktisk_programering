@@ -1,3 +1,4 @@
-Adding vectors: a + b (2, 4, 3)
-Subtracting vectors a - b (0, 2, 1)
- Inner product =  6
+Adding vectors: a + b (2, 2, 3)
+Subtracting vectors a - b (0, 0, 1)
+Inner product =  4
+Norm of b =1.73205
