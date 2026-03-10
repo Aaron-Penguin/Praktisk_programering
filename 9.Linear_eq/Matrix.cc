@@ -25,7 +25,7 @@ Matrix::Matrix(double (&mat)[R][C]) {
 
 
 
-Matrix::Matrix(int Rows, int Cols){
+Matrix::Matrix(int Rows, int Cols, double a_ij){
     rows = Rows;
     cols = Cols;
 
@@ -35,7 +35,7 @@ Matrix::Matrix(int Rows, int Cols){
         array[i] = new double[cols]();  //Setting colums for eatch row
         
         for (int j=0; j < cols; ++j){
-            array[i][j] = 0;
+            array[i][j] = a_ij;
         }
     }
 }
@@ -92,7 +92,7 @@ Matrix& Matrix::operator-=(const Matrix& mat_b) {
 
 // Definition of (*)
 Matrix operator*(const Matrix& mat_a , const Matrix& mat_b) {
-    Matrix mat_c(mat_a.rows, mat_b.cols);                   // initializing empty matrix
+    Matrix mat_c(mat_a.rows, mat_b.cols, 0);                   // initializing empty matrix
     
     if (mat_a.cols == mat_b.rows){
 
