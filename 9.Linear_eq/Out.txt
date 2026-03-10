@@ -1,1 +1,3 @@
-3
+printed matrix =
+| 1 | 
+| 2 | 
