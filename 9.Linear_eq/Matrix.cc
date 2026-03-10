@@ -53,6 +53,15 @@ void Matrix::print() {
     }
 }
 
+// Norm ------------------------------------
+double Matrix::norm(){
+    if (cols == 1 || rows == 1){                 // column vector
+        double inner_prod;
+        
+    }
+}
+
+
 
 // ============================  Definition of operations ===============================================
 
