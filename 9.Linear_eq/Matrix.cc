@@ -1,5 +1,6 @@
 #include<iostream>
 #include <optional>
+#include<cmath>
 #include "Matrix.h"
 
 using namespace std;
@@ -53,12 +54,40 @@ void Matrix::print() {
     }
 }
 
-// Norm ------------------------------------
-double Matrix::norm(){
-    if (cols == 1 || rows == 1){                 // column vector
-        double inner_prod;
-        
+// Inner_product ------------------------------------
+double Matrix::inner_prod(){
+    Matrix v = *this;
+    
+    if (v.cols == 1){                 // column vector
+        Matrix inner_product = v.T() * v;
+        return inner_product.array[0][0];
+    } else if(v.rows == 1){           // row vectors
+        Matrix inner_product = v * v.T();
+        return inner_product.array[0][0];
+    } else {
+        cout << "Shapes do not match. You can't take the inner product of this object." << endl;
+        return -1;
     }
+}
+
+// Norm -------------------------------------------------
+
+double Matrix::norm(){
+    Matrix v = *this;
+    double inner_prod = v.inner_prod();
+    return pow(inner_prod, 0.5);
+}
+
+
+// Transposing a matrix
+Matrix Matrix::T(){
+    Matrix mat_T(cols, rows, 0);
+    for (int i=0; i < rows; ++i){
+        for (int j=0; j< cols; ++j){
+            mat_T.array[j][i] = array[i][j];
+        }
+    }
+    return mat_T; 
 }
 
 
@@ -66,7 +95,7 @@ double Matrix::norm(){
 // ============================  Definition of operations ===============================================
 
 
-// Definition of (+=)
+// Definition of (+=) with Matrix
 Matrix& Matrix::operator+=(const Matrix& mat_b) {
     if (rows == mat_b.rows && cols == mat_b.cols){
         for (int i=0; i < rows; ++i){
@@ -81,7 +110,7 @@ Matrix& Matrix::operator+=(const Matrix& mat_b) {
     }
 };
 
-// Definition of (-=)
+// Definition of (-=) with Matrix
 Matrix& Matrix::operator-=(const Matrix& mat_b) {
     if (rows == mat_b.rows && cols == mat_b.cols){
         for (int i=0; i < rows; ++i){
@@ -97,9 +126,28 @@ Matrix& Matrix::operator-=(const Matrix& mat_b) {
 };
 
 
+// Definition of (*=) with double
+Matrix& Matrix::operator*=(const double& alpha){
+    for (int i=0; i < rows; ++i){
+        for (int j=0; j< cols; ++j){
+            array[i][j] *= alpha;
+        }
+    }
+    return *this; 
+}
 
 
-// Definition of (*)
+// Definition of (/=) with double
+Matrix& Matrix::operator/=(const double& alpha){
+    for (int i=0; i < rows; ++i){
+        for (int j=0; j< cols; ++j){
+            array[i][j] /= alpha;
+        }
+    }
+    return *this; 
+}
+
+// Definition of (*) Matrix with Matrix
 Matrix operator*(const Matrix& mat_a , const Matrix& mat_b) {
     Matrix mat_c(mat_a.rows, mat_b.cols, 0);                   // initializing empty matrix
     
@@ -115,4 +163,28 @@ Matrix operator*(const Matrix& mat_a , const Matrix& mat_b) {
         return mat_c;
     } else{cout << "Shapes do not match for matrix multiplication." << endl;
         return mat_c;}
+}
+
+// Definition of (*) scalar with Matrx
+Matrix operator*(const double& alpha , const Matrix& mat_a){
+    int rows = mat_a.rows;
+    int cols = mat_a.cols;
+    Matrix output_mat(rows, cols, 0);
+    for (int i=0; i < rows; ++i){
+        for (int j=0; j < cols; ++j){
+            output_mat.array[i][j] = alpha * mat_a.array[i][j];
+        }
+    }
+    return output_mat;
+}
+
+// Definition of general inner product
+double Inner_prod(const Matrix& vec_1, const Matrix& vec_2){
+    if (vec_1.rows == 1 && vec_2.cols == 1){                 // column vector
+        Matrix inner_product = vec_1 * vec_2;
+        return inner_product.array[0][0];
+    } else {
+        cout << "Shapes do not match. You can't take the inner product of this object." << endl;
+        return -1;
+    }
 }

@@ -1,11 +1,11 @@
 class Matrix{
-public:
+private:
 
     int rows;
     int cols;
 
+public:    
     double **array;
-
 
 
     template<int R, int C>
@@ -14,15 +14,37 @@ public:
 
     ~Matrix() = default;
 
+
+    // Fundamental operations
+    Matrix& operator+=(const Matrix&);
+    Matrix& operator-=(const Matrix&);
+    Matrix& operator*=(const double&);
+    Matrix& operator/=(const double&);
+
+    
+    friend Matrix operator*(const Matrix& mat_a , const Matrix& mat_b);
+    friend Matrix operator*(const double& alpha , const Matrix& mat_a);
+
+    // Smart matrix stuff
+    Matrix T();
+
+    //Only for vectors  (Maybe start using child class)
+    friend double Inner_prod(const Matrix& vec_1, const Matrix& vec_2);
+    
+    double inner_prod();
+    double norm();
+
+    //Getter methods
     void print();
 
-
-    Matrix& operator+=(const Matrix&);
-    Matrix& operator-=(const Matrix&);  
+    int get_rows(){return rows;};
+    int get_cols(){return cols;};
+    // auto get_array(){return array;};
 };
 
 
-Matrix operator*(const Matrix& mat_a , const Matrix& mat_b);
+
+
 
 
 
