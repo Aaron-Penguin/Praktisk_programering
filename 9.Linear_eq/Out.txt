@@ -4,3 +4,7 @@ printed matrix =
 printed matrix =
 | 0 0.4 0.8 | 
 | 0 0 0 | 
+printed matrix =
+| 0 0 0 | 
+| 0.4 0.8 1.2 | 
+| 0.8 1.6 2.4 | 

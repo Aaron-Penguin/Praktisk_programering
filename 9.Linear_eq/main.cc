@@ -30,5 +30,9 @@ Q.print();
 
 QR qr(mat_A);
 
+qr.R.print();
+
+// cout << &mat_A << endl;
+
 return 0; 
 }

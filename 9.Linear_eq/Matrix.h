@@ -14,7 +14,6 @@ public:
 
     ~Matrix() = default;
 
-
     // Fundamental operations
     Matrix& operator+=(const Matrix&);
     Matrix& operator-=(const Matrix&);
@@ -40,7 +39,6 @@ public:
 
     int get_rows(){return rows;};
     int get_cols(){return cols;};
-    // auto get_array(){return array;};
 };
 
 
@@ -49,23 +47,18 @@ public:
 class QR{
 public:
     Matrix A;
-
-    Matrix R;
     Matrix Q;
+    Matrix R;
 
-    template<int row, int col>
     QR(Matrix& M);
-
     ~QR() = default;
 };
 
 
-template<int row, int col>    //Obs!!!   Gram-Schmidt method assumes that the initial basis consists of linear independent elements.
-QR::QR(Matrix& M){
-    A = M;
-    Q = M.Gram_schmidt();
-    R = Q.T()*M;
-};
+// template<int row, int col>    //Obs!!!   Gram-Schmidt method assumes that the initial basis consists of linear independent elements.
+
+QR::QR(Matrix& M): A(M), Q(M.Gram_schmidt()),  R(Q.T()*M)
+{};
 
 
 

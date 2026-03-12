@@ -10,7 +10,7 @@ main: main.o
 
 
 main.o: main.cc
-	$(CXX) -c main.cc -o main.o
+	$(CXX) $(CXXFLAGS) -c main.cc -o main.o
 
 # $(Objects): %.o: %.cc
 # 	$(CXX) $(CXXFLAGS) -c $^ -o $@

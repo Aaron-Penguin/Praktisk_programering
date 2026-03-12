@@ -7,6 +7,7 @@ Out.txt : main             # Creating an txt file for the output
 main: main.o source.o
 	$(CXX) main.o source.o -o main
 
+
 main.o: main.cc header.h
 	$(CXX) $(CXXFLAGS) -c main.cc
 
