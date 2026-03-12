@@ -1,7 +1,7 @@
 #include<iostream>
-#include <optional>
 #include<cmath>
 #include "Matrix.h"
+#include<vector>
 
 using namespace std;
 
@@ -90,6 +90,29 @@ Matrix Matrix::T(){
     return mat_T; 
 }
 
+
+// Gram-Schmidt
+
+Matrix Matrix::Gram_schmidt(){
+    vector<Matrix> arr;
+    for (int j=0; j< cols; ++j){         // Separating the matrix into diffrent colums
+        Matrix a_j(rows, 1, 0);
+        for (int i=0; i < rows; ++i){
+            a_j.array[i][0] = array[i][j];
+        }
+        arr.push_back(a_j);
+    }
+    
+    Matrix final_mat(rows, cols, 0);
+    for (int i=0; i< cols; ++i){             // Starting Gram-Schmidt
+        arr[i] /= arr[i].norm();
+        for (int j= i +1 ; j < cols; ++j){
+            arr[j] -= Inner_prod(arr[i].T(), arr[j]) * arr[i];
+            final_mat.array[i][j] = arr[j].array[i][0];
+        }
+    }
+    return final_mat;
+}
 
 
 // ============================  Definition of operations ===============================================

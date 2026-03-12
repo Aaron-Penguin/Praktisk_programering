@@ -27,6 +27,7 @@ public:
 
     // Smart matrix stuff
     Matrix T();
+    Matrix Gram_schmidt();
 
     //Only for vectors  (Maybe start using child class)
     friend double Inner_prod(const Matrix& vec_1, const Matrix& vec_2);
@@ -40,6 +41,30 @@ public:
     int get_rows(){return rows;};
     int get_cols(){return cols;};
     // auto get_array(){return array;};
+};
+
+
+// ----------- For QR ----------------
+
+class QR{
+public:
+    Matrix A;
+
+    Matrix R;
+    Matrix Q;
+
+    template<int row, int col>
+    QR(Matrix& M);
+
+    ~QR() = default;
+};
+
+
+template<int row, int col>    //Obs!!!   Gram-Schmidt method assumes that the initial basis consists of linear independent elements.
+QR::QR(Matrix& M){
+    A = M;
+    Q = M.Gram_schmidt();
+    R = Q.T()*M;
 };
 
 
