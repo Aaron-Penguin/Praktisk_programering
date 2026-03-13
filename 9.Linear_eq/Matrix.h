@@ -15,6 +15,7 @@ public:
     // Matrix(int Rows, int Cols, double a_ij);      // matrix (Rows, Cols), with a for every index.
 
     Matrix(int Rows, int Cols, double a_ij);
+    Matrix(int size, int position);
 
     ~Matrix() = default;
 

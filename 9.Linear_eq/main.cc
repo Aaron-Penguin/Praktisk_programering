@@ -21,6 +21,8 @@ Matrix mat_A(A);
 QR qr(mat_A);
 
 
+cout << "==== Exercise A ====" << endl;
+
 cout << "Matrix A =" << endl;
 mat_A.print();
 
@@ -54,13 +56,36 @@ Matrix solution = qr.solve(vec_b);
 solution.print();
 
 
-cout << "Testing the correctnis of the solution. Ax =" << endl;
+cout << "Testing the correctnes of the solution. Ax =" << endl;
 Matrix Test_b = mat_A * solution;
 Test_b.print();
 
 cout << "Determinant of A, compuded as det(R): det(R) =" << endl;
 double det_R = qr.det();
 cout << det_R << endl;
+
+cout << "===== Exercise B ====== " << endl;
+
+cout << "We now define a new Matix B, for witch we want to find it's inverse. B =" << endl;
+double B[3][3] = {
+    {1,2,0},
+    {1,0,0},
+    {1,0,3}
+};
+
+Matrix mat_B(B);
+QR qrB(mat_B);
+
+mat_B.print();
+
+Matrix mat_B_inv = qrB.Inverse();
+
+cout << "The inverse of B must then be:" << endl;
+mat_B_inv.print();
+
+cout << "We can test the reult, be cheking that B*B^{-1} = I. We get" << endl;
+Matrix identety_mat = mat_B_inv*mat_B;
+identety_mat.print();
 
 return 0; 
 }

@@ -1,3 +1,4 @@
+==== Exercise A ====
 Matrix A =
 | 1 2 | 
 | 1 0 | 
@@ -23,9 +24,22 @@ We define a vector: b =
 Solution to the equation Ax = b, is found to be: x =
 | 1 | 
 | 0.5 | 
-Testing the correctnis of the solution. Ax =
+Testing the correctnes of the solution. Ax =
 | 2 | 
 | 1 | 
 | 1 | 
 Determinant of A, compuded as det(R): det(R) =
 2.82843
+===== Exercise B ====== 
+We now define a new Matix B, for witch we want to find it's inverse. B =
+| 1 2 0 | 
+| 1 0 0 | 
+| 1 0 3 | 
+The inverse of B must then be:
+| 1.92296e-16 1 -6.40988e-17 | 
+| 0.5 -0.5 3.39935e-17 | 
+| -1.23358e-16 -0.333333 0.333333 | 
+We can test the reult, be cheking that B*B^{-1} = I. We get
+| 1 3.84593e-16 -1.92296e-16 | 
+| -4.65607e-16 1 1.0198e-16 | 
+| -2.77556e-16 -2.46716e-16 1 | 

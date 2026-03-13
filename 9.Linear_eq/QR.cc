@@ -1,5 +1,8 @@
 #include "QR.h"
+#include<iostream>
+#include<vector>
 
+using namespace std;
 
 QR::QR(Matrix& M): 
     A(M), 
@@ -28,4 +31,30 @@ double QR::det(){
         det_of_R *= R.array[i][i];
     }
     return det_of_R;
+}
+
+
+Matrix QR::Inverse(){
+    int dim = A.get_rows(); 
+    if (dim == A.get_cols()){                //Tjeck that the matrix is square.
+        QR qr_solver = *this;
+        
+        vector<Matrix> arr;
+        for (int i=0; i < dim; ++i){
+            Matrix e_i(dim, i);
+            Matrix x_i = qr_solver.solve(e_i);
+            arr.push_back(x_i);
+        }
+        Matrix inverse(dim, dim, 0);
+
+        for(int i=0; i< dim; ++i){
+            for (int j=0; j < dim; ++j){
+                inverse.array[i][j] = arr[j].array[i][0];
+            }
+        }
+        return inverse;
+    } else {
+        cout << "Only a square Matrix can have an inverse. This matrix A is not a square Matrix" << endl;
+        return A;
+    }   
 }
