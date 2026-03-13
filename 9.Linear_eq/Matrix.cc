@@ -112,32 +112,46 @@ Matrix Matrix::Gram_schmidt(){
     Matrix final_mat(rows, cols, 0);
     for (int i=0; i< cols; ++i){             // Starting Gram-Schmidt
 
-        cout << "a_i before normalizing" << endl;
-        arr[i].print();
+        // cout << "a_i before normalizing" << endl;
+        // arr[i].print();
         arr[i] /= arr[i].norm();
-        cout << "a_i after normalizing" << endl;
-        arr[i].print();
+        // cout << "a_i after normalizing" << endl;
+        // arr[i].print();
 
 
         for (int j= i +1 ; j < cols; ++j){
-            cout << "a_j before Gramm schmidt" << endl;
-            arr[j].print();
+            //cout << "a_j before Gramm schmidt" << endl;
+            // arr[j].print();
 
             arr[j] -= Inner_prod(arr[i].T(), arr[j]) * arr[i];
     
-            cout << "a_j after Gramm schmidt" << endl;
-            arr[j].print();
-            // final_mat.array[i][j] = arr[j].array[i][0];
+            // cout << "a_j after Gramm schmidt" << endl;
+            // arr[j].print();
         }
     }
     for (int i=0; i < rows; ++i){
         for (int j=0; j < cols; ++j){
-            final_mat.array[i][j] = arr[j].array[i][0];
+            // if (arr[j].array[i][0] < 1e-15){
+                // final_mat.array[i][j] = 0;    
+            // } else {
+            final_mat.array[i][j] = arr[j].array[i][0];    
         }
     }
     return final_mat;
 }
 
+// Fix numeric zeros
+void Matrix::Fix_numeric_zeros(){
+    for (int i=0; i < rows; ++i){
+        for (int j=0; j < cols; ++j){
+            if (abs(array[i][j]) < 1e-15){
+                array[i][j] = 0;
+            } else{
+                array[i][j] = array[i][j];
+            }
+        }
+    }
+}
 
 // ============================  Definition of operations ===============================================
 

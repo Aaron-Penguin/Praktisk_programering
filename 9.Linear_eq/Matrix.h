@@ -27,6 +27,7 @@ public:
     // Smart matrix stuff
     Matrix T();
     Matrix Gram_schmidt();
+    void Fix_numeric_zeros();  // Must still be modified. seems do do nothing.
 
     //Only for vectors  (Maybe start using child class)
     friend double Inner_prod(const Matrix& vec_1, const Matrix& vec_2);
@@ -52,10 +53,12 @@ public:
 
     QR(Matrix& M);
     ~QR() = default;
+
+    Matrix solve(Matrix b);
 };
 
 
-// template<int row, int col>    //Obs!!!   Gram-Schmidt method assumes that the initial basis consists of linear independent elements.
+//Obs!!!   Gram-Schmidt method assumes that the initial basis consists of linear independent elements.
 
 QR::QR(Matrix& M): 
     A(M), 
@@ -63,6 +66,18 @@ QR::QR(Matrix& M):
     R(Q.T()*M)
 {};
 
+Matrix QR::solve(Matrix b){
+    Matrix c = Q.T() * b;
+ 
+    for (int i= c.get_rows() -1; i >=0; i--){              // This method is based on a Lecture Note
+        double sum = 0;
+        for (int k = i+1; k < c.get_rows(); ++k){
+            sum += R.array[i][k] * c.array[k][0];
+        }
+        c.array[i][0] = ( c.array[i][0] - sum  )/ R.array[i][i]; 
+    }
+    return c;
+}
 
 
 
