@@ -27,3 +27,5 @@ Testing the correctnis of the solution. Ax =
 | 2 | 
 | 1 | 
 | 1 | 
+Determinant of A, compuded as det(R): det(R) =
+2.82843

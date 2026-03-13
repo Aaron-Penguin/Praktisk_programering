@@ -1,7 +1,8 @@
 #include<iostream>
-// #include <optional>
-#include "Matrix.cc"
 #include<vector>
+#include "Matrix.cc"
+#include "QR.cc"
+
 
 using namespace std;
 
@@ -57,6 +58,9 @@ cout << "Testing the correctnis of the solution. Ax =" << endl;
 Matrix Test_b = mat_A * solution;
 Test_b.print();
 
+cout << "Determinant of A, compuded as det(R): det(R) =" << endl;
+double det_R = qr.det();
+cout << det_R << endl;
 
 return 0; 
 }

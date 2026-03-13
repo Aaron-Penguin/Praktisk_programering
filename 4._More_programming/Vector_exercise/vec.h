@@ -6,7 +6,7 @@ struct vec{
 
     // Constructor
     vec(double x_in, double y_in, double z_in);
-    vec();                                    // default
+    vec();                                                     // default
     vec(const vec&) = default;                                 // copy
     vec(vec&&) = default;                                      // move
     ~vec() = default;                                          // destructor
