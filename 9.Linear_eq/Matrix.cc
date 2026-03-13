@@ -44,7 +44,7 @@ Matrix::Matrix(int Rows, int Cols, double a_ij){
 
 // Printing the matrix ----------------------
 void Matrix::print() {
-    cout << "printed matrix =" << endl;
+    // cout << "printed matrix =" << endl;
     for (int i = 0; i < rows; ++i) {
         cout <<"| ";
         for (int j = 0; j < cols; ++j) {
@@ -97,17 +97,41 @@ Matrix Matrix::Gram_schmidt(){
     vector<Matrix> arr;
     for (int j=0; j< cols; ++j){         // Separating the matrix into diffrent colums
         Matrix a_j(rows, 1, 0);
+        // cout << "Test for a_j" << endl;
+        // a_j.print();
         for (int i=0; i < rows; ++i){
             a_j.array[i][0] = array[i][j];
         }
         arr.push_back(a_j);
     }
-    
+    // cout << "Test for matrix seperated into colum vectors: first ved" << endl;
+    // arr[0].print();
+    // cout << "second vec" << endl;
+    // arr[1].print();
+
     Matrix final_mat(rows, cols, 0);
     for (int i=0; i< cols; ++i){             // Starting Gram-Schmidt
+
+        cout << "a_i before normalizing" << endl;
+        arr[i].print();
         arr[i] /= arr[i].norm();
+        cout << "a_i after normalizing" << endl;
+        arr[i].print();
+
+
         for (int j= i +1 ; j < cols; ++j){
+            cout << "a_j before Gramm schmidt" << endl;
+            arr[j].print();
+
             arr[j] -= Inner_prod(arr[i].T(), arr[j]) * arr[i];
+    
+            cout << "a_j after Gramm schmidt" << endl;
+            arr[j].print();
+            // final_mat.array[i][j] = arr[j].array[i][0];
+        }
+    }
+    for (int i=0; i < rows; ++i){
+        for (int j=0; j < cols; ++j){
             final_mat.array[i][j] = arr[j].array[i][0];
         }
     }

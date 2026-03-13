@@ -1,10 +1,38 @@
-printed matrix =
-| 1 2 3 | 
-| 2 3 4 | 
-printed matrix =
-| 0 0.4 0.8 | 
-| 0 0 0 | 
-printed matrix =
-| 0 0 0 | 
-| 0.4 0.8 1.2 | 
-| 0.8 1.6 2.4 | 
+a_i before normalizing
+| 1 | 
+| 1 | 
+| 1 | 
+a_i after normalizing
+| 0.57735 | 
+| 0.57735 | 
+| 0.57735 | 
+a_j before Gramm schmidt
+| 2 | 
+| 0 | 
+| 0 | 
+a_j after Gramm schmidt
+| 1.33333 | 
+| -0.666667 | 
+| -0.666667 | 
+a_i before normalizing
+| 1.33333 | 
+| -0.666667 | 
+| -0.666667 | 
+a_i after normalizing
+| 0.816497 | 
+| -0.408248 | 
+| -0.408248 | 
+Matrix A =
+| 1 2 | 
+| 1 0 | 
+| 1 0 | 
+Q after gramm schmidt
+| 0.57735 0.816497 | 
+| 0.57735 -0.408248 | 
+| 0.57735 -0.408248 | 
+(Shood be upper triangle matrix) Matrix R =
+| 1.73205 1.1547 | 
+| -4.44089e-16 1.63299 | 
+This matrix shood be an identety matrix
+| 1 -2.77556e-16 | 
+| -2.77556e-16 1 | 

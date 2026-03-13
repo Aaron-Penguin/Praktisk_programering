@@ -57,7 +57,10 @@ public:
 
 // template<int row, int col>    //Obs!!!   Gram-Schmidt method assumes that the initial basis consists of linear independent elements.
 
-QR::QR(Matrix& M): A(M), Q(M.Gram_schmidt()),  R(Q.T()*M)
+QR::QR(Matrix& M): 
+    A(M), 
+    Q(M.Gram_schmidt()),  
+    R(Q.T()*M)
 {};
 
 

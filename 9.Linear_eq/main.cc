@@ -9,28 +9,30 @@ using namespace std;
 int main() {
 
 
-double A[2][3] = {
-    {1,2,3},
-    {2,3,4}
+double A[3][2] = {
+    {1,2},
+    {1,0},
+    {1,0}
 };
 
-double B[3][1] = {
-    {1},
-    {2},
-    {0}
-};
 
 Matrix mat_A(A);
-Matrix mat_B(B);
-
-
-mat_A.print();
-Matrix Q = mat_A.Gram_schmidt();
-Q.print();
-
 QR qr(mat_A);
 
+
+cout << "Matrix A =" << endl;
+mat_A.print();
+
+
+cout << "Q after gramm schmidt" << endl;
+qr.Q.print();
+
+cout << "(Shood be upper triangle matrix) Matrix R =" << endl;
 qr.R.print();
+
+cout << "This matrix shood be an identety matrix" << endl;
+Matrix identety = qr.Q.T() * qr.Q;
+identety.print(); 
 
 // cout << &mat_A << endl;
 
