@@ -12,13 +12,16 @@ main: main.o
 main.o: main.cc
 	$(CXX) $(CXXFLAGS) -c main.cc -o main.o
 
-# $(Objects): %.o: %.cc
-# 	$(CXX) $(CXXFLAGS) -c $^ -o $@
-
-
 
 clear:
 	rm -f *.o Out.txt main
+
+out.times.data : main Makefile
+	>$@
+	for N in $$(seq 100 20 200); do \
+		time --format "$$N %e" --output $@ --append \
+		./$< -size $$N 1>out 2>err ;\
+	done 
 
 
 

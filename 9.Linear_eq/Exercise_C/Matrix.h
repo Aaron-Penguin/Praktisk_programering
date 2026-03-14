@@ -1,5 +1,7 @@
 #include<string>
 
+
+
 class Matrix{
 private:
 
@@ -9,10 +11,8 @@ private:
 public:    
     double **array;
 
-
     template<int R, int C>
-    Matrix(double (&mat)[R][C]); 
-    // Matrix(int Rows, int Cols, double a_ij);      // matrix (Rows, Cols), with a for every index.
+    Matrix(double (&mat)[R][C]);
 
     Matrix(int Rows, int Cols, double a_ij);
     Matrix(int size, int position);

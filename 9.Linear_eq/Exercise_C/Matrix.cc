@@ -7,12 +7,12 @@
 using namespace std;
 
 
+
+
 // Constructors definition ------------------------------------------------------------
 
 template<int R, int C>
 Matrix::Matrix(double (&mat)[R][C]) {
-    // rows = sizeof(mat)/sizeof(mat[0]);         // Number of rows 
-    // cols = sizeof(mat[0])/sizeof(mat[0][0]);  //  Number of colums
     rows = R;
     cols = C;
 
@@ -26,7 +26,6 @@ Matrix::Matrix(double (&mat)[R][C]) {
         }
     }
 };
-
 
 
 Matrix::Matrix(int Rows, int Cols, double a_ij){
@@ -43,6 +42,7 @@ Matrix::Matrix(int Rows, int Cols, double a_ij){
         }
     }
 }
+
 
 
  Matrix::Matrix(int size, int position){

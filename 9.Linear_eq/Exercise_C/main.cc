@@ -1,31 +1,37 @@
 #include<iostream>
 #include<cstdlib>
+#include<string>
 
 #include "Matrix.cc"
 #include "QR.cc"
 using namespace std;
 
 
-int main() {
+int main(int argc, char* argv[]) {
 
-int N = 3;
-double A[N][N];
-
-for (int i =0; i < N; ++i){
-    for (int j=0; j < N; ++j){
-        A[i][j] =  (rand() % 101);
+    int size;
+    for(int i=0; i < argc; ++i){
+        std::string arg=argv[i];    // Converting to string
+        if(arg=="-size" && i+1 < argc) {
+            size = stoi(argv[i+1]);
+        }
     }
-}
+
+    if (size <= 0) {
+        std::cerr << "Invalid matrix size." << std::endl;
+        return 1; // Exit with an error code
+    }
 
 
-// double B[2][2] = {
-//     {1,2},
-//     {4,0}
-// };
+    Matrix A(size, size, 0);
 
-Matrix mat_A(A);
-mat_A.print();
+    for (int i =0; i < size; ++i){
+        for (int j=0; j < size; ++j){
+            A.array[i][j] =  (rand() % 101);
+        }
+    }
+    // A.print();
 
-
+    QR qr(A);
 return 0; 
 }
