@@ -2,8 +2,11 @@
 #include<cstdlib>
 #include<string>
 
-#include "Matrix.cc"
-#include "QR.cc"
+// #include "Matrix.cc"
+// #include "QR.cc"
+#include "Matrix.h"
+#include "QR.h"
+
 using namespace std;
 
 
@@ -30,7 +33,6 @@ int main(int argc, char* argv[]) {
             A.array[i][j] =  (rand() % 101);
         }
     }
-    // A.print();
 
     QR qr(A);
 return 0; 

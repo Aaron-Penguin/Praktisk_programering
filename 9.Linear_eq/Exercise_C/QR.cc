@@ -1,4 +1,6 @@
+#include "Matrix.h"
 #include "QR.h"
+
 #include<iostream>
 #include<vector>
 

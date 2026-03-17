@@ -1,6 +1,7 @@
+#ifndef MATRIX_H
+#define MATRIX_H
+
 #include<string>
-
-
 
 class Matrix{
 private:
@@ -47,6 +48,5 @@ public:
     int get_cols(){return cols;};
 };
 
-
-
+#endif
 

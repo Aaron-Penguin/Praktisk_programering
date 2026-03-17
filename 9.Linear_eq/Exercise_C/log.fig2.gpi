@@ -1,0 +1,12 @@
+\
+set terminal png ;\
+set output "plot" ;\
+set title "Computation time of QR facorization";\
+set tics out ;\
+set xlabel "N" ;\
+set ylabel "time [s]" ;\
+set fit errorvariables;\
+f(x) = a*x**3;\
+fit f(x) out.times.data.txt using 1:2 via;\
+plot "out.times.data.txt" using 1:2 with points title "QR factorization",\ f(x);\
+
