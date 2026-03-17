@@ -8,7 +8,7 @@ out.times.data : main Makefile
 	for N in $$(seq 100 20 500); do \
 		time --format "$$N %e" --output $@ --append \
 		./$< -size $$N 1>out 2>err ;\
-	done 
+	done
 
 
 main: main.o

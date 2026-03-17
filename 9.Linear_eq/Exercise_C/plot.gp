@@ -7,7 +7,13 @@ set key outside
 # set xrange [0:250]
 # set yrange [0:2]
 
-set linetype 1 lw 2 lc rgb "red" pointtype 1
+set fit errorvariables
 
-plot "out.times.data" using 1:0 with points title "QR factorization"
+f(x) = a*x**3
+fit f(x) 'out.times.data' using 1:2 via a
+
+
+set linetype 1 lw 2 lc rgb "red" pointtype 1
+plot "out.times.data" using 1:2 with points title "QR factorization",\
+f(x)
 pause -1
