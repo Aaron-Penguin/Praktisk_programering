@@ -21,5 +21,4 @@ public:
     Matrix Inverse();
 
 };
-
 #endif
