@@ -16,6 +16,10 @@ double A[3][2] = {
     {1,0}
 };
 
+// double B[2][2] {};
+
+// Matrix mat_B(B);
+// mat_B.print();
 
 Matrix mat_A(A);
 QR qr(mat_A);

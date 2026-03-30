@@ -12,13 +12,20 @@ private:
 public:    
     double **array;
 
-    template<int R, int C>
+
+
+    template<int R, int C>                     // Standart constructor
     Matrix(double (&mat)[R][C]);
 
-    Matrix(int Rows, int Cols, double a_ij);
+    Matrix();                                  // Default constructor
+    Matrix(int Rows, int Cols, double a_ij);   // Same idex matrix constructor
+    Matrix(int size);                          // Identety
+
     Matrix(int size, int position);
 
+
     ~Matrix() = default;
+
 
     // Fundamental operations
     Matrix& operator+=(const Matrix&);
@@ -47,6 +54,25 @@ public:
     int get_rows(){return rows;};
     int get_cols(){return cols;};
 };
+
+
+template<int R, int C>
+Matrix::Matrix(double (&mat)[R][C]) {
+    rows = R;
+    cols = C;
+
+    array = new double*[rows];
+
+    for (int i=0; i< rows; ++i) {
+        array[i] = new double[cols]();
+        
+        for (int j=0; j < cols; ++j) {
+            array[i][j] = mat[i][j];
+        }
+    }
+};
+
+
 
 #endif
 

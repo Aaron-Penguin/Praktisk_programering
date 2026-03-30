@@ -9,29 +9,19 @@ using namespace std;
 
 
 
+
 // Constructors definition ------------------------------------------------------------
 
-template<int R, int C>
-Matrix::Matrix(double (&mat)[R][C]) {
-    rows = R;
-    cols = C;
-
-    array = new double*[rows];
-
-    for (int i=0; i< rows; ++i) {
-        array[i] = new double[cols]();
-        
-        for (int j=0; j < cols; ++j) {
-            array[i][j] = mat[i][j];
-        }
-    }
-};
+// Default constructor
+Matrix::Matrix(): rows(1), cols(1){
+    array = new double*[rows];           // Setting rows in matrix
+    array[0] = new double[cols]();  //Setting colums for eatch row
+    array[0][0] = 0;
+}
 
 
-Matrix::Matrix(int Rows, int Cols, double a_ij){
-    rows = Rows;
-    cols = Cols;
-
+// Matrix with same index
+Matrix::Matrix(int Rows, int Cols, double a_ij): rows(Rows), cols(Cols){
     array = new double*[rows];           // Setting rows in matrix
 
     for (int i=0; i< rows; ++i){
@@ -42,6 +32,18 @@ Matrix::Matrix(int Rows, int Cols, double a_ij){
         }
     }
 }
+
+
+// Identety Matrix
+Matrix::Matrix(int size): rows(size), cols(size){
+    array = new double*[rows];           // Setting rows in matrix
+
+    for (int i=0; i< rows; ++i){
+        array[i] = new double[cols]();  //Setting colums for eatch row
+        array[i][i] = 1.0;
+    }
+}
+
 
 
 
