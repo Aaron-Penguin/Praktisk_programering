@@ -162,6 +162,18 @@ Matrix Matrix::Gram_schmidt(){
     return final_mat;
 }
 
+
+Matrix Matrix::copy(){
+    Matrix B(rows, cols, 0);         //Declaring new Matrix
+
+    for (int i=0; i < rows; ++i){
+        for (int j=0; j < cols; ++j){
+            B.array[i][j] = array[i][j];
+        }
+    }
+    return B;
+}
+
 // Fix numeric zeros
 void Matrix::Fix_numeric_zeros(){
     for (int i=0; i < rows; ++i){

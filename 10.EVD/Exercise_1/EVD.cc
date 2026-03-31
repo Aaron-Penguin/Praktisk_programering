@@ -3,45 +3,50 @@
 
 
 // Constructor
-EVD::EVD(Matrix A): V(A.get_rows()), w(A.get_rows(), 1, 0){  // Only use A as real symetric matrix.
+EVD::EVD(Matrix A): D(A.get_rows()), V(A.get_rows()), w(A.get_rows(), 1, 0){  // Only use A as real symetric matrix.
 
-	int counter=0;
+	Matrix A_copy = A.copy();
+
+	std::cout << "========================================" << "\n";
+	std::cout << "Constructor of the EVD class is called" << "\n";
+	int counter=1;
 	// std::cout << "This shood be an identety matrix" << "\n";
 	// V.print();
 
 	bool changed;
 	do{
-		std::cout << "Swap nr = " << counter << "\n";
 		changed=false;
-		for(int p=0; p < A.get_rows() -1; p++){
-			for(int q=p+1; q < A.get_rows(); q++){
+		for(int p=0; p < A_copy.get_rows() -1; p++){
+			for(int q=p+1; q < A_copy.get_rows(); q++){
 
-				double a_pq=A.array[p][q], a_pp=A.array[p][p], a_qq=A.array[q][q];   // Becorse A is symetrix A[p][q] = A[q][p]
+				double a_pq=A_copy.array[p][q], a_pp=A_copy.array[p][p], a_qq=A_copy.array[q][q];   // Becorse A is symetrix A[p][q] = A[q][p]
 				double theta = 0.5*std::atan2(2*a_pq, a_qq - a_pp);
 				double c=std::cos(theta),s=std::sin(theta);
 				double new_a_pp =c*c*a_pp -2*s*c*a_pq +s*s*a_qq;
 				double new_a_qq= s*s*a_pp +2*s*c*a_pq +c*c*a_qq;
 				
 				if(new_a_pp != a_pp || new_a_qq != a_qq){  // This critiria checks whether some dioganal elements have chainged. If its the case do a rotation.
-					std::cout << "Rotation is performed" << "\n";
+					std::cout << "Rotaion nr = " << counter << "\n";
 					changed = true;
-					timesJ(A,p,q, theta); // A←A*J 
-					Jtimes(A,p,q, -theta); // A←J.T()*A 
+					timesJ(A_copy,p,q, theta); // A←A*J 
+					Jtimes(A_copy,p,q, -theta); // A←J.T()*A 
 
 					timesJ(V,p,q, theta); // V←V*J
-					A.print();
-
+					A_copy.print();
 					counter += 1;
 				}
 			}
 		}
-	// }while (counter < 5);
 	}while(changed);
-	std::cout << "Final diagonal matrix" << std::endl;
-	A.print();
 
-	for (int k=0; k < A.get_rows(); ++k){
-		w.array[k][0] = A.array[k][k];		
+	std::cout << "========================================" << "\n";
+	std::cout << "Final diagonal matrix D =" << std::endl;
+	A_copy.print();
+	std::cout << "========================================" << "\n";
+
+	D = D*A_copy;
+	for (int k=0; k < A_copy.get_rows(); ++k){
+		w.array[k][0] = A_copy.array[k][k];		
 	}
 };
 

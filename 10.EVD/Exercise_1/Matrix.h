@@ -40,6 +40,7 @@ public:
     // Smart matrix stuff
     Matrix T();
     Matrix Gram_schmidt();
+    Matrix copy();
     void Fix_numeric_zeros();  // Must still be modified. seems do do nothing.
 
     //Only for vectors  (Maybe start using child class)
