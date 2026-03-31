@@ -38,6 +38,8 @@ EVD::EVD(Matrix A): D(A.get_rows()), V(A.get_rows()), w(A.get_rows(), 1, 0){  //
 			}
 		}
 	}while(changed);
+	// }while (counter < 25);
+	
 
 	std::cout << "========================================" << "\n";
 	std::cout << "Final diagonal matrix D =" << std::endl;

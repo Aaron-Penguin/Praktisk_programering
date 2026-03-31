@@ -28,7 +28,33 @@ mat_A.print();
 EVD evd(mat_A);
 
 std::cout << "Testing the EVD class results" << "\n";
+// mat_A.print();
+Matrix D_test = evd.V.T() * mat_A * evd.V;
+
+std::cout << " V.T * A * V =  " << "\n";
+D_test.print();
+
+std::cout << "-----------------------" << "\n";
+std::cout << "Matrix D = " << "\n";
+evd.D.print();
+
+std::cout << "======================" << "\n";
+
+std::cout << "V* D * V.T = " << "\n";
+Matrix A_test = evd.V * evd.D  *  evd.V.T();
+A_test.print();
+
+std::cout << " A = " << "\n";
 mat_A.print();
+std::cout << "======================" << "\n";
+
+std::cout << "This shood give the Identety matrix, V.T * V =" << "\n";
+(evd.V.T() * evd.V).print();
+
+std::cout << "======================" << "\n";
+
+std::cout << "This shood give the Identety matrix, V * V.T =" << "\n";
+(evd.V * evd.V.T()).print();
 
 return 0;
 }

@@ -41,10 +41,12 @@ public:
     Matrix T();
     Matrix Gram_schmidt();
     Matrix copy();
+
     void Fix_numeric_zeros();  // Must still be modified. seems do do nothing.
 
     //Only for vectors  (Maybe start using child class)
     friend double Inner_prod(const Matrix& vec_1, const Matrix& vec_2);
+    // friend void Compaire_Matrix(const Matrix& A, const Matrix& B);
     
     double inner_prod();
     double norm();
