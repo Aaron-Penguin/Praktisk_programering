@@ -4,7 +4,7 @@
 
 #include "Matrix.h"
 
-using namespace std;
+// using namespace std;
 
 
 
@@ -47,32 +47,16 @@ Matrix::Matrix(int size): rows(size), cols(size){
 
 
 
- Matrix::Matrix(int size, int position){
-    rows = size;
-    cols = 1;
-
-    array = new double*[rows];           // Setting rows in matrix
-
-    for (int i=0; i< rows; ++i){
-        array[i] = new double[cols]();  //Setting colums for eatch row
-        
-        for (int j=0; j < cols; ++j){
-            array[i][j] = 0;
-        }
-    }
-    array[position][0] = 1;
- }
-
 
 // Printing the matrix ----------------------
 void Matrix::print() {
     // cout << "printed matrix =" << endl;
     for (int i = 0; i < rows; ++i) {
-        cout <<"| ";
+        std::cout <<"| ";
         for (int j = 0; j < cols; ++j) {
             std::cout << array[i][j] << " ";
         }
-        cout << "| " << endl;
+        std::cout << "| " << std::endl;
     }
 }
 
@@ -87,7 +71,7 @@ double Matrix::inner_prod(){
         Matrix inner_product = v * v.T();
         return inner_product.array[0][0];
     } else {
-        cout << "Shapes do not match. You can't take the inner product of this object." << endl;
+        std::cout << "Shapes do not match. You can't take the inner product of this object." << std::endl;
         return -1;
     }
 }
@@ -116,7 +100,7 @@ Matrix Matrix::T(){
 // Gram-Schmidt
 
 Matrix Matrix::Gram_schmidt(){
-    vector<Matrix> arr;
+    std::vector<Matrix> arr;
     for (int j=0; j< cols; ++j){         // Separating the matrix into diffrent colums
         Matrix a_j(rows, 1, 0);
         // cout << "Test for a_j" << endl;
@@ -200,7 +184,7 @@ Matrix& Matrix::operator+=(const Matrix& mat_b) {
         }
     return *this;    
     } else {
-        cout << "Shapes of the added matixes do not match." << endl;
+        std::cout << "Shapes of the added matixes do not match." << std::endl;
         return *this;
     }
 };
@@ -215,7 +199,7 @@ Matrix& Matrix::operator-=(const Matrix& mat_b) {
         }
     return *this;    
     } else {
-        cout << "Shapes of the added matixes do not match." << endl;
+        std::cout << "Shapes of the added matixes do not match." << std::endl;
         return *this;
     }
 };
@@ -242,6 +226,26 @@ Matrix& Matrix::operator/=(const double& alpha){
     return *this; 
 }
 
+// Definition of (+) Matrix with Matrix
+
+Matrix operator+(const Matrix& mat_a, const Matrix& mat_b){
+    Matrix C(mat_a.rows, mat_a.cols, 0.0);
+
+    if (mat_a.rows == mat_b.rows && mat_a.cols == mat_b.cols){
+
+        for (int i=0; i < mat_a.rows; ++i){
+            for (int j=0; j < mat_a.cols; ++j){
+                C.array[i][j] = mat_a.array[i][j] + mat_b.array[i][j];
+            }
+        }
+    return C;    
+    } else{
+        std::cout << "Shapes of the added matixes do not match." << std::endl;
+        return C;
+    }
+};
+
+
 // Definition of (*) Matrix with Matrix
 Matrix operator*(const Matrix& mat_a , const Matrix& mat_b) {
     Matrix mat_c(mat_a.rows, mat_b.cols, 0);                   // initializing empty matrix
@@ -256,7 +260,7 @@ Matrix operator*(const Matrix& mat_a , const Matrix& mat_b) {
             }
         }
         return mat_c;
-    } else{cout << "Shapes do not match for matrix multiplication." << endl;
+    } else{std::cout << "Shapes do not match for matrix multiplication." << std::endl;
         return mat_c;}
 }
 
@@ -284,7 +288,7 @@ double Inner_prod(const Matrix& vec_1, const Matrix& vec_2){
         Matrix inner_product = vec_1 * vec_2;
         return inner_product.array[0][0];
     } else {
-        cout << "Shapes do not match. You can't take the inner product of this object." << endl;
+        std::cout << "Shapes do not match. You can't take the inner product of this object." << std::endl;
         return -1;
     }
 }

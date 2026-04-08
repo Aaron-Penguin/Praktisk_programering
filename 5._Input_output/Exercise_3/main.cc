@@ -14,6 +14,7 @@ int main (int argc, char *argv[]) {
 		if(arg=="--input" && i+1 < argc) infile=argv[i+1];
 		if(arg=="--output" && i+1 < argc) outfile=argv[i+1];
 	}
+	
 std::ifstream myinput(infile);
 std::ofstream myoutput(outfile);
 double x;
