@@ -2,15 +2,15 @@
 #include<vector>
 
 #include "EVD.h"
-#include "Quicksort.h"
+// #include "Quicksort.h"
 
 // Constructor
 EVD::EVD(Matrix A): D(A.get_rows()), V(A.get_rows()), w(A.get_rows(), 1, 0){  // Only use A as real symetric matrix.
 
 	Matrix A_copy = A.copy();
 
-	std::cout << "========================================" << "\n";
-	std::cout << "Constructor of the EVD class is called" << "\n";
+	// std::cout << "========================================" << "\n";
+	// std::cout << "Constructor of the EVD class is called" << "\n";
 	int counter=1;
 	// std::cout << "This shood be an identety matrix" << "\n";
 	// V.print();
@@ -43,10 +43,10 @@ EVD::EVD(Matrix A): D(A.get_rows()), V(A.get_rows()), w(A.get_rows(), 1, 0){  //
 	// }while (counter < 25);
 	
 
-	std::cout << "========================================" << "\n";
-	std::cout << "Final diagonal matrix D =" << std::endl;
-	A_copy.print();
-	std::cout << "========================================" << "\n";
+	// std::cout << "========================================" << "\n";
+	// std::cout << "Final diagonal matrix D =" << std::endl;
+	// A_copy.print();
+	// std::cout << "========================================" << "\n";
 
 	D = D*A_copy;
 	for (int k=0; k < A_copy.get_rows(); ++k){
@@ -77,19 +77,19 @@ void EVD::Jtimes(Matrix& A, int p, int q, double theta){
 	}
 }
 
-void EVD::Sort_eig(){
+// void EVD::Sort_eig(){
 
-	double arr[w.get_rows()] = {};          // Converting to a rank 1 tensor.
-	for (int i=0; i < w.get_rows(); ++i){
-		arr[i] = w.array[i][0];
-	}
+// 	double arr[w.get_rows()] = {};          // Converting to a rank 1 tensor.
+// 	for (int i=0; i < w.get_rows(); ++i){
+// 		arr[i] = w.array[i][0];
+// 	}
 
-	std::vector<int> Index = func::quicksort(arr, w.get_rows());     // List of index, for sorting eigenvalues with increasing order. 
+// 	std::vector<int> Index = func::quicksort(arr, w.get_rows());     // List of index, for sorting eigenvalues with increasing order. 
 
-	Matrix New_V(V.get_rows(), V.get_cols(), 0);
-	for (int i=0; i < V.get_rows(); ++i){
-		for (int j=0; j < V.get_cols(); ++j){
-			New_V.array[i][j] = V.array[Index[i]][j];
-		}
-	}
-};
+// 	Matrix New_V(V.get_rows(), V.get_cols(), 0);
+// 	for (int i=0; i < V.get_rows(); ++i){
+// 		for (int j=0; j < V.get_cols(); ++j){
+// 			New_V.array[i][j] = V.array[Index[i]][j];
+// 		}
+// 	}
+// };

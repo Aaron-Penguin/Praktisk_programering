@@ -1,3 +1,5 @@
+// Will be used in later implementations.
+
 #include "Vector.h"
 
 

@@ -17,7 +17,7 @@ class EVD{       // Must ensure that the input matrix A is real and symetric
 
     EVD(Matrix A);
 
-    void Sort_eig();
+    // void Sort_eig();
 };
 
 

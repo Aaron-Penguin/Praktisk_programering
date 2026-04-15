@@ -5,19 +5,41 @@
 
 #include "Matrix.h"
 #include "EVD.h"
-#include "Vector.h"
 
-#include "Quicksort.h"
-
-
+// #include "Vector.h"
+// #include "Quicksort.h"
 
 
+double R_0(double r_val){
+        return 2.0* std::exp(- r_val);
+}
+
+double R_1(double r_val){
+    return - 2* std::pow(2, -1.5) * (1 -r_val/2) *std::exp(- r_val/2);
+}
 
 
-int main(){
 
-double rmax = 15.0;
-double dr = 0.1;
+int main(int argc, char* argv[]){
+
+std::string input_type;
+double dr;
+double rmax;
+
+for(int i=0; i < argc; ++i){
+    std::string arg=argv[i];    // Converting to string
+    if(arg=="-dr" && i+1 < argc){
+        dr = std::stod(argv[i+1]);     // convert to double!
+    }
+    if(arg=="-rmax" && i+1 < argc){
+        rmax = std::stod(argv[i+1]);
+    }
+    if(arg=="-printtype" && i+1 < argc){
+        input_type = argv[i+1];
+    }
+}                                           
+
+
 int N = (int) (rmax/dr) -1;
 
 
@@ -42,53 +64,33 @@ Matrix K = - (1/(2*dr*dr)) *ddx;
 // V.print();
 
 Matrix H = K + V;
-H.print();
+// H.print();
 
 EVD evd(H);  // Diagonalizing the Hamiltonian
 
-std::cout << " Unsorted vector of eigenvaloues =" << "\n";
 
-evd.w.print();
+if (input_type == "rmax_input"){
+    std::cerr << "printed valoues of dr =" << rmax << "\n";
+    std::cout << rmax << "   " << evd.w.array[0][0] << "\n";
+}
 
-// evd.V.print();
-
-// evd.Sort_eig();
-
-
-
-// int len = evd.w.get_rows();
-
-// double arr[evd.w.get_rows()] = {};
-// for (int i=0; i<evd.w.get_rows(); ++i){
-//     arr[i] = evd.w.array[i][0];
-// }
-
-// for (int j=0; j <evd.w.get_rows(); ++j){
-//     std::cout << arr[j] <<"\n";
-// }
-
-// std::cout << "---------Vector -------" <<"\n";
-
-// std::vector<double> u_sort_eig(arr, arr + 6);
-// for (int j=0; j <evd.w.get_rows(); ++j){
-//     std::cout << u_sort_eig[j] <<"\n";
-// }
-
-// for (int i=0; i<evd.w.get_rows(); ++i){
-//     std::cout << u_sort_eig[i]  << "\n";
-// }
+if (input_type == "dr_input"){
+    std::cerr << "printed valoues of dr =" << dr << "\n";
+    std::cout << dr << "   " << evd.w.array[0][0] << "\n";
+}
 
 
-
-// std::vector<int> vec = func::quicksort(arr, len);
-
-
-
-
-// for (int i=0; i < len; ++i){
-//     std::cout << vec[i] << " ";    
-// }
-// std::cout << std::endl;
+if (input_type == "wave_function"){
+    for (int i=0; i < evd.V.get_rows(); ++i){
+        double r_i = (i+1)*dr;
+        std::cout << evd.w.array[i][0] << "   " << r_i << "   " << R_0(r_i) << "   " << R_1(r_i) << "   ";
+        for (int j=0; j < evd.V.get_cols(); ++j){
+            double Normalized_psi = std::pow(dr, -0.5) * evd.V.array[i][j] *(1/r_i); 
+            std::cout << Normalized_psi << "   ";
+        }
+        std::cout << "" << "\n"; 
+    }
+}
 
 
 

@@ -18,10 +18,10 @@ public:
 
     Vector(int size, int position, bool colum_vec);      // Unit vector
 
+    
+
     // Geter methods
-    void get_type(){
-        std::cout << type << "\n";
-    }
+    void get_type(){std::cout << type << "\n";}
 };
 
 
