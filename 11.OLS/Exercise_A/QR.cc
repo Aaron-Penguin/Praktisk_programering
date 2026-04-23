@@ -4,8 +4,6 @@
 #include<iostream>
 #include<vector>
 
-using namespace std;
-
 QR::QR(Matrix& M): 
     A(M), 
     Q(M.Gram_schmidt()),  
@@ -41,7 +39,7 @@ Matrix QR::Inverse(){
     if (dim == A.get_cols()){                //Tjeck that the matrix is square.
         QR qr_solver = *this;
         
-        vector<Matrix> arr;
+        std::vector<Matrix> arr;
         for (int i=0; i < dim; ++i){
             Matrix e_i(dim, i);
             Matrix x_i = qr_solver.solve(e_i);
@@ -56,7 +54,7 @@ Matrix QR::Inverse(){
         }
         return inverse;
     } else {
-        cout << "Only a square Matrix can have an inverse. This matrix A is not a square Matrix" << endl;
+        std::cerr << "Only a square Matrix can have an inverse. This matrix A is not a square Matrix" << std::endl;
         return A;
     }   
 }

@@ -1,0 +1,5 @@
+T_(1/2)[measured] =   4.06242+-0.170394 days
+Ra-224  decays with a alpha decay.
+Hafe-life today measured to be: T_(1/2)[modern] = 3.6 days.
+(T_(1/2)[measured] - T_(1/2)[modern]) =0.462425
+The deviation between the two valoues is computed to be   2.71386    standartdeviations 

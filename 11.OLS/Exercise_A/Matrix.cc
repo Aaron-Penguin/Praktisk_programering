@@ -76,6 +76,17 @@ void Matrix::print() {
     }
 }
 
+
+void Matrix::print_for_txt(){
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            std::cout << array[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+};
+
+
 // Inner_product ------------------------------------
 double Matrix::inner_prod(){
     Matrix v = *this;

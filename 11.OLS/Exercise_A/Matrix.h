@@ -54,6 +54,7 @@ public:
 
     //Getter methods
     void print();
+    void print_for_txt();
 
     int get_rows(){return rows;};
     int get_cols(){return cols;};
