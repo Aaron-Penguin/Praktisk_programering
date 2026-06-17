@@ -2,17 +2,18 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++20
 Objekts = main.o
 
-all: out.txt
+all: Data.txt
+
+Data.txt: main
+	./main -printtype Construct_data > $@
+
+Interp.txt: main
+	./main -printtype Spline_data > $@
 
 
-out.txt: main
-	./main > $@
-
-
-x_data = 1 2 3 4 5
-
-test_data.txt:
-	2 >> $@
+plot.pdf: main Makefile Data.txt Interp.txt plot.gp
+	rm -f $@
+	gnuplot plot.gp > $@
 
 
 
