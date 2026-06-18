@@ -1,23 +1,23 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++20
-Objekts = main.o
+Objekts = main.o RK12.o Driver.o
 
-all: Data.txt
-
-Data.txt: main
-	./main > $@
-
+all: SHO.txt HO_friction.txt plot.pdf
 
 # Data.txt: main
-# 	./main -printtype Construct_data > $@
-
-# Interp.txt: main
-# 	./main -printtype Spline_data > $@
+# 	./main > $@
 
 
-# plot.pdf: main Makefile Data.txt Interp.txt plot.gp
-# 	rm -f $@
-# 	gnuplot plot.gp > $@
+SHO.txt: main
+	./main -printtype Solver_1 > $@
+
+HO_friction.txt: main
+	./main -printtype Solver_2 > $@
+
+
+plot.pdf: main Makefile SHO.txt HO_friction.txt plot.gp
+	rm -f $@
+	gnuplot plot.gp > $@
 
 
 

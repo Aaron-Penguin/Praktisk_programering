@@ -1,50 +1,77 @@
 #include<iostream>
-#include<tuple>
-#include <cstddef>
-#include<functional>
 // #include<cmath>
+
+#include "RK12.h"
+#include "Driver.h"
 
 using vector = std::vector<double>;
 
 
-// Operator overloading for Runge Kuta --  Chat-GPT
-static vector operator+(const vector& a, const vector& b){
-    vector r(a.size());
-    for(std::size_t i=0;i<a.size();++i) r[i]=a[i]+b[i];
-    return r;
-}
-static vector operator-(const vector& a, const vector& b){
-    vector r(a.size());
-    for(std::size_t i=0;i<a.size();++i) r[i]=a[i]-b[i];
-    return r;
-}
-static vector operator*(const vector& a, double s){
-    vector r(a.size());
-    for(std::size_t i=0;i<a.size();++i) r[i]=a[i]*s;
-    return r;
-}
-static vector operator*(double s, const vector& a){ return a*s; }
+// Simple Harmonic ossilator
+// u''(x) = - u(x)
+// y1(x) = u(x)
 
-// -----------------------
+// y1' = y2
+// y2' = - y1
 
-std::tuple<vector, vector> rkstep12(
-	const std::function<vector(double, const vector&)>& f, /* the f from dy/dx=f(x,y) */
-	double x,                    /* the current value of the variable */
-	const vector& y,                   /* the current value y(x) of the sought function */
-	double h                     /* the step to be taken */
-	)
-{
-	vector k0 = f(x,y);              /* embedded lower order formula (Euler) */   // (Eq.32)
-	vector k1 = f(x+h/2, y+ k0*(h/2)); /* higher order formula (midpoint) */        // (Eq.33)  with alpha = 1/2
-	vector yh = y+k1*h;              /* y(x+h) estimate */
-	vector δy = (k1 - k0)*h;           /* error estimate */     // (Eq.34) - (Eq.24) 
-	return std::make_tuple(yh,δy);
+vector f(double x, const vector y) {       //Based on ai     
+    vector dy(2);
+    dy[0] = y[1];
+    dy[1] = -y[0];
+    return dy;
+}
+
+// HO with friction
+// u''(x) + b* u'(x) + c*u(x) = 0;    we set b = 1/2 and c = 1
+
+vector f_friction(double x, const vector y){
+    vector dy(2);
+    dy[0] = y[1];
+    dy[1] = - 0.25* y[1] - 5* y[0];
+    return dy;
 }
 
 
-int main(){
 
-std::cout << "Hello world" << std::endl;
+
+int main(int argc, char* argv[]) {
+
+std::string input_type;
+
+for(int i=0; i < argc; ++i){
+    std::string arg=argv[i];    // Converting to string
+
+    if(arg=="-printtype" && i+1 < argc){
+        input_type = argv[i+1];
+    }
+}      
+
+vector vec = {1, 0};   //Initial valoues 
+
+
+if(input_type == "Solver_1"){                         // First solving SHO
+    std::tuple Solution = driver(f, 0, 10, vec);
+    auto [xes, yes] = Solution;
+
+    int I = static_cast<int>(xes.size());
+
+    for (int i=0; i < I; i++){
+        std::cout << xes[i] << "   " << yes[i][0] << std::endl;
+    }
+}
+
+
+
+if(input_type == "Solver_2"){                           // Now including friction, with same initial valoue
+    std::tuple Solution_2 = driver(f_friction, 0, 10, vec);
+    auto [x_ny, y_ny] = Solution_2;
+
+    int J = static_cast<int>(x_ny.size());
+
+    for (int i=0; i < J; i++){
+        std::cout << x_ny[i] << "   " << y_ny[i][0] << std::endl;
+    }
+}
 
 
 return 0;
