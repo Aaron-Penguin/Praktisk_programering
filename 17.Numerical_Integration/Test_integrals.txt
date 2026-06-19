@@ -1,0 +1,5 @@
+int_{0}^{1} sqrt(x) dx = 0.666954,    ncalls = 16
+int_{0}^{1} 1/(sqrt(x)) dx = 1.99996,    ncalls = 8572
+int_{0}^{1} sqrt(1 - x^2) dx = 0.785812,    ncalls = 16
+int_{0}^{1} ln(x)/sqrt(x) dx = -3.99992,    ncalls = 8604
+For all integrals, the first 3 digites behind the comma maches with the expected result, satisfying the accuracy of 0.001.
