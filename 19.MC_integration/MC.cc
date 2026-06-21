@@ -42,7 +42,7 @@ std::tuple<double, double> MC(
         double mean = sum1/N;                                            // mean of f(x) over the region of integration
         double sigma = std::sqrt(sum2/N - std::pow(mean,2));             // sigma = sqrt( <f^2>  - <f>^2 ). Spread in f(x).
         double Integrated_volume = mean*V;
-        double Error = sigma*V/std::sqrt(N);                             // error of integration (Eq.3)
+        double Error = sigma*V/std::sqrt(N);                             // estimeted error of integration (Eq.3)
         return std::make_tuple(Integrated_volume, Error) ;           
     }; 
 

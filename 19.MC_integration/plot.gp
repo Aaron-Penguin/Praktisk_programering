@@ -13,6 +13,6 @@ set linetype 1 lc rgb "red"
 set pointsize 0.3
 
 
-plot "out.txt" using 1:3 with lines title "Estimated Error",\
-"out.txt" using 1:4 with lines title "Actual Error"
+plot "Circle.txt" using 1:3 with lines title "Estimated Error",\
+"Circle.txt" using 1:4 with lines title "Actual Error"
 pause -1

@@ -1,0 +1,49 @@
+Norm of fx =45.4964
+Norm of fx =5.7341
+Norm of fx =0.148068
+Norm of fx =0.000108261
+Rosenbrock ekstrema: x_0 =  1  y_0 =  1
+Norm of fx =3.24406e+06
+Norm of fx =960998
+Norm of fx =284602
+Norm of fx =84231.3
+Norm of fx =24891.2
+Norm of fx =7328.13
+Norm of fx =2137.01
+Norm of fx =607.474
+Norm of fx =160.465
+Norm of fx =33.8498
+Norm of fx =3.57698
+Norm of fx =0.0596453
+Norm of fx =1.75955e-05
+Rosenbrock ekstrema: x_1 =  1  y_1 =  1
+------------------------------------------
+Norm of fx =34.6867
+Norm of fx =19.9219
+Norm of fx =2.44443
+Norm of fx =0.126332
+Norm of fx =0.00041763
+Himmelblau first ekstremum: x_0 =  3  y_0 =  2.00001
+Norm of fx =33072.9
+Norm of fx =9728.04
+Norm of fx =2832.99
+Norm of fx =804.492
+Norm of fx =213.373
+Norm of fx =46.4926
+Norm of fx =6.03161
+Norm of fx =0.330775
+Norm of fx =0.00268846
+Norm of fx =1.96703e-07
+Himmelblau second ekstremum: x_0 =  3.58443  y_0 =  -1.84813
+Norm of fx =13.797
+Norm of fx =0.86738
+Norm of fx =0.00428734
+Norm of fx =1.06022e-07
+Himmelblau fourth ekstremum: x_0 =  -3.77931  y_0 =  -3.28319
+Norm of fx =252.036
+Norm of fx =58.6404
+Norm of fx =8.7743
+Norm of fx =0.415498
+Norm of fx =0.00132039
+Norm of fx =1.3985e-08
+Himmelblau fifth ekstremum: x_0 =  -2.80512  y_0 =  3.13131
