@@ -3,7 +3,7 @@
 The final result of the implementation of the linear prediction, is shown in "plot.pdf".
 Only the points with x < 1, are used as input for the fitting.
 
-The "Matrix.cc" and "QR.cc" files and there header files, are
+The "Matrix.cc" and "QR.cc" files and their header files, are
 copys from the Homework exercise folder "9.Linear_eq" of my repository.
 
 "Matrix.cc" gives the fundamental class that is implemented in "QR.cc", for QR-decomposition.
@@ -11,4 +11,4 @@ copys from the Homework exercise folder "9.Linear_eq" of my repository.
 "function.cc" includes just an example function used for sampling and fitting. This function is visualised as plot in "plot.pdf". 
 
 "sample.txt" includes the data, by direct evaluation of the function. (First colum = x_data;  Second colum = y_data)
-"fit.txt"  includes the data point, found through extrapolation. (First colum = x_data;  Second colum = y_data)
+"fit.txt"  includes the data points, found through extrapolation. (First colum = x_data;  Second colum = y_data)
