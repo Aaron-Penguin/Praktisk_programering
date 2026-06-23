@@ -82,7 +82,8 @@ if (input_type == "Qspline_data"){
 
 	std::vector<double> X_interp;
 	std::vector<double> Y_interp;  // Initilized empty vector
-	// std::vector<double> Integrated;
+	std::vector<double> Integrated;
+	double F_tot = 0.0;
 
 	Qspline QS(X_data, Y_data);
 	
@@ -91,20 +92,19 @@ if (input_type == "Qspline_data"){
 	}
 
 	int M = X_interp.size();
-	// double F_tot = 0.0;
 	
 	for (int m =0; m < M; m++){
 		double z_m = X_interp[m];
 		double y_fit = QS.eval(z_m);
 		Y_interp.push_back(y_fit);
 
-		// double F = linterpInteg(X_data, Y_data, z_m);
-		// F_tot += F; 
-		// Integrated.push_back(F_tot);
+		double F = QS.Integrate(z_m);
+		F_tot += F;
+		Integrated.push_back(F_tot);
 	}
 
 	for (int i =0; i < M; i++){
-		std::cout << X_interp[i] << "    " << Y_interp[i] <<  std::endl;
+		std::cout << X_interp[i] << "    " << Y_interp[i] << "    " << Integrated[i] << std::endl;
 	}
 }
 

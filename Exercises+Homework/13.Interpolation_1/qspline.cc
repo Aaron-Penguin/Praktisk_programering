@@ -1,5 +1,6 @@
 #include "binsearch.h"
 #include "qspline.h"
+#include<cmath>
 
 
 // --- Constructor ---
@@ -35,3 +36,15 @@ double Qspline::eval(double z){
     double s_i = y[i] + b[i]*(z - x[i]) + c[i]*(z-x[i])*(z-x[i]);
     return s_i;
 };
+
+double Qspline::Integrate(double z){
+    int i = binsearch(x,z);
+    // double Tot_int = 0.0;
+
+    // for (int j=0; j <i; j++){
+    //     Tot_int += y[j]*(x[j+1] - x[i]) + (1/2)*b[i]*std::pow((x[j+1] - x[i]),2) + (1/3)*c[i]*std::pow((x[j+1] - x[i]),3);
+    // }
+
+    double Tot_int = y[i]*(z - x[i]) + (1/2)*b[i]*std::pow((z - x[i]),2) + (1/3)*c[i]*std::pow((z - x[i]),3);
+    return Tot_int;
+}

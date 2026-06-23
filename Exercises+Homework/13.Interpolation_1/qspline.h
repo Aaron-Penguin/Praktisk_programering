@@ -13,6 +13,7 @@ struct Qspline{
 
 
     double eval(double z);
+    double Integrate(double z);
 };
 
 
