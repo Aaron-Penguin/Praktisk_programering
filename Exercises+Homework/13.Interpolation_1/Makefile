@@ -1,8 +1,8 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++20
-Objekts = main.o
+Objekts = main.o binsearch.o Linear_spline.o qspline.o
 
-all: Data.txt
+all: plot.pdf
 
 Data.txt: main
 	./main -printtype Construct_data > $@
@@ -10,8 +10,11 @@ Data.txt: main
 Interp.txt: main
 	./main -printtype Spline_data > $@
 
+qspline.txt: main
+	./main -printtype Qspline_data > $@
 
-plot.pdf: main Makefile Data.txt Interp.txt plot.gp
+
+plot.pdf: main Makefile Data.txt Interp.txt qspline.txt plot.gp
 	rm -f $@
 	gnuplot plot.gp > $@
 
