@@ -247,21 +247,6 @@ Matrix operator*(const double& alpha , const Matrix& mat_a){
     return output_mat;
 }
 
-// Definition of (+) Matrix with Matrix
-Matrix operator+(const Matrix& mat_a , const Matrix& mat_b){
-    int rows = mat_a.rows;
-    int cols = mat_a.cols;
-    Matrix output_mat(rows, cols, 0.0);
-    for (int i=0; i < rows; i++){
-        for (int j=0; j < cols; j++){
-            output_mat.array[i][j] = mat_a.array[i][j] + mat_b.array[i][j];
-        }
-    }
-    return output_mat;
-}
-
-
-
 // Definition of general inner product
 double Inner_prod(const Matrix& vec_1, const Matrix& vec_2){
     if (vec_1.rows == 1 && vec_2.cols == 1){                 // column vector

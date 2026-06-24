@@ -29,7 +29,6 @@ public:
     
     friend Matrix operator*(const Matrix& mat_a , const Matrix& mat_b);
     friend Matrix operator*(const double& alpha , const Matrix& mat_a);
-    friend Matrix operator+(const Matrix& mat_a , const Matrix& mat_b);
 
     // Smart matrix stuff
     Matrix T();

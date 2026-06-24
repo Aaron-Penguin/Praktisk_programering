@@ -1,0 +1,2 @@
+Rosenbrock: 1 lokal min:  (x,y) =    (1.00035, 1.0007)    Steps =25941
+Himmelblau: 1 lokal min:  (x,y) =    (2.99999, 2.00003)    Steps =9568
